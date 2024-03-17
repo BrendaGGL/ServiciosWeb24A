@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRICUT</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style-login.css' %}">
+
+</head>
+
+
+
+<body background="{% static 'imagenes/login3.jpg' %}">
+
+    <header>
+        <h2 class="logo">NUTRICUT</h2>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+
+
+
+    {% if error != "" %}
+    <dialog open>
+        <p class="text-center">
+          {{error}}
+        </p>
+        <div class="flex flex-space-between">
+          <button class="btn" id="close_dialog">OK</button>
+        </div>
+      </dialog>
+    {% endif %} 
+
+    
+    
+
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+
+        <div class="form-box login">
+            <h2>Login</h2>
+            
+            <form  action="/login/" method="POST">
+                <!-- let the app know its been send by itself -->
+                {% csrf_token %}
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <input type="text" name="username" required>
+                <label>Username</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" name="password" required>
+                <label>Password</label>
+             </div>
+             <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+                <a href="#">Forgot Password?</a>
+             </div>
+             <button type="submit" class="btn">Login</button>
+             <div class="login-register">
+                <p>Don't have an account?<a 
+                    href="#" class="register-link"> Register</a>
+                </p>
+             </div>
+         </form>
+        </div>
+
+
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form action ="#" method="POST" class="formulario" id="formulario">
+                <!-- let the app know its been send by itself -->
+                {% csrf_token %}
+			<div class="input-box" id="grupo__usuario">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+					<input type="text" class="formulario__input" name="usuario" id="usuario" required>
+					<i class="formulario__validacion-estado"></i>
+                    <label>Username</label>
+                    <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+			</div>
+			<div class="input-box" id="grupo__correo">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+					<input type="email" class="formulario__input" name="correo" id="correo" required>
+                    <i class="formulario__validacion-estado"></i>
+                    <label>Email</label>
+                <div class="div">
+                    <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+                </div>
+			</div>
+			<div class="input-box" id="grupo__password">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+					<input type="password" class="formulario__input" name="password" id="password" required>
+                    <i class="formulario__validacion-estado"></i>
+                    <label>Password</label>
+                <div class="div">
+                    <p class="formulario__input-error">La contraseña tiene que ser de 8 a 16 dígitos.</p>
+                </div>
+			</div>
+			<div class="input-box" id="grupo__password2">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+					<input type="password" class="formulario__input" name="password2" id="password2" required>
+                    <i class="formulario__validacion-estado"></i>
+                    <label>Confirmar Password</label>
+                <div class="div">
+                    <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+                </div>	
+			</div>
+
+			<div class="remember-forgot">
+                <label><input type="checkbox" id="terminos" required>I agree to the terms & conditions</label>
+             </div>
+             <button type="submit" class="btn">Register</button>
+             <div class="login-register">
+                <p>Already have an account?<a 
+                    href="#" class="login-link"> Login</a>
+                </p>
+             </div>
+
+         </form>
+        </div>
+
+
+    </div>
+
+    <script src="{% static 'js/script-login.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
