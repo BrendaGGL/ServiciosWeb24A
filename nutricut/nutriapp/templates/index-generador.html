@@ -8,6 +8,33 @@
 </head>
 <body>
   <h1>Generador de Recetas</h1>
+
+  <div class="container">
+
+    <form id="apiform" method="POST" action="/generador/">
+      {% csrf_token %}
+  
+        <label for="username">Categoria</label>
+        <select name="cat" id="cat">
+          <option selected value="">Selecciona Una</option>
+          <option value="recipes">Recetas</option>
+          <option value="ingredients">Ingredientes</option>
+          <option value="products">Productos</option>
+      </select>
+       
+       <label for="username">Search</label>
+       <input type="search" id="query" name="query">
+  
+       
+  
+       <button type="submit">Submit</button>
+    </form>
+  
+  
+  </div>
+  
+
+
   <form id="recipeGeneratorForm">
     <h2>Selecciona tus ingredientes:</h2>
     <div class="dropdown">
@@ -37,7 +64,42 @@
   </form>
 
   <div id="recipeResults">
-    <!-- Aquí se mostrarán las recetas -->
+    <div class="container">
+
+      <h4>API Results for:</h4>
+      <h3>Cat: <em style="color: #9c07b6"><b>"{{cat}}"</b></em></h3>
+      <h3>Query: <em style="color: #9c07b6"><b>"{{query}}"</b></em></h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+          <th>Image</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for item in results %}
+            <tr>
+              <td>{{item.id}}</td>
+              {% if item.name %}
+                <td>{{item.name}}</td>
+              {% else %}
+                <td>{{item.title}}</td>
+              {% endif %}
+              {% if cat == "ingredients" %}
+              <td>No image available</td>
+              {% else %}
+              <td><img src="{{item.image}}" style="width:auto; height: 125px"></td> 
+              {% endif %}
+            </tr>
+          {% endfor %}
+            
+          </tbody>
+        </table>
+    
+    
+    </div>
+    
   </div>
 
   <script src="Scripts/script-generador.js"></script>

@@ -16,10 +16,13 @@
 
 <body background="{% static 'imagenes/login3.jpg' %}">
 
+
+
+
     <header>
         <h2 class="logo">NUTRICUT</h2>
         <nav class="navigation">
-            <a href="index.html">Home</a>
+            <a href="">Home</a>
             <a href="#">About</a>
             <a href="#">Services</a>
             <a href="#">Contact</a>
@@ -29,17 +32,17 @@
 
 
 
-    {% if error != "" %}
-    <dialog open>
+    {% if mensaje != "" %}
+    <dialog >
         <p class="text-center">
-          {{error}}
+          {{mensaje}}
         </p>
         <div class="flex flex-space-between">
           <button class="btn" id="close_dialog">OK</button>
         </div>
       </dialog>
     {% endif %} 
-
+    
     
     
 
@@ -78,7 +81,7 @@
 
         <div class="form-box register">
             <h2>Registration</h2>
-            <form action ="#" method="POST" class="formulario" id="formulario">
+            <form action ="/signup/" method="POST" class="formulario" id="formulario">
                 <!-- let the app know its been send by itself -->
                 {% csrf_token %}
 			<div class="input-box" id="grupo__usuario">
