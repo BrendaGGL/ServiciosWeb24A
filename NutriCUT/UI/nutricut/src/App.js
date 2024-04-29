@@ -1,14 +1,21 @@
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import { Home } from './pages/main/Login';
-import { Dashboard } from './pages/main/Dashboard'
-import { Logout } from "./pages/main/Logout";
+import { Dashboard } from "./pages/main/user/Dashboard";
+import { Logout } from "./pages/main/user/Logout";
 import { Panel } from "./pages/admin/Panel";
 import { Panel_Recipes } from "./pages/admin/Panel_Recipes";
-import { Recipes } from "./pages/main/Gen";
-import { Generator } from "./pages/main/Home";
-import { Cousine } from "./pages/main/Cousine";
-import { Search } from "./pages/main/Search";
-import { Recipe } from "./pages/main/Recipe";
+import { Recipes } from "./pages/main/recipe_gen/Gen";
+import { Generator } from "./pages/main/recipe_gen/Home";
+import { Cousine } from "./pages/main/recipe_gen/Cousine";
+import { Search } from "./pages/main/recipe_gen/Search";
+import { Recipe } from "./pages/main/recipe_gen/Recipe";
+import Plan from "./pages/main/meal plan/Plan";
+import { Favorite } from "./pages/main/user/Favorite";
+import { PlanList } from "./pages/main/meal plan/PlanList";
+import { CreatePlan } from "./pages/main/meal plan/CreatePlan";
+import { Dayplan } from "./pages/main/meal plan/dayPlan";
+import { WeeklyPlan } from "./pages/main/meal plan/weeklyPlan";
+
 
 function App() {
   return (
@@ -26,6 +33,14 @@ function App() {
         <Route path="/cousine/:type" element={<Cousine/>} />
         <Route path="/searched/:search" element={<Search/>} />
         <Route path="/recipe/:name" element={<Recipe/>} />
+        <Route path="/plan" element={<PlanList/>} />
+        <Route path="/favorite" element={<Favorite/>} />
+        <Route path="/plan_user/" element={<CreatePlan/>} />
+        <Route path="/plan_user/:id/:name" element={<Plan/>} />
+        <Route path="/day_plan/" element={<Dayplan/>} />
+
+        <Route path="/week_plan/" element={<WeeklyPlan/>} />
+
       </Routes>
     </BrowserRouter>
 

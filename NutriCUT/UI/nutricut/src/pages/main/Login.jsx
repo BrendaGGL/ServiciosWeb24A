@@ -27,9 +27,13 @@ export function Home(){
             // Initialize the access & refresh token in localstorage.      
                     localStorage.clear();
                     localStorage.setItem('jwt', data.access_token);
+                    localStorage.setItem('username', data.username);
+                    localStorage.setItem('email', data.email);
+                    localStorage.setItem('id', data.id);
+
                     window.location.href = '/dashboard'
                     console.log(data.access_token)
-            
+
         }
 
 
@@ -58,14 +62,14 @@ export function Home(){
                     <HomeCSS>
                         <body>
                             <header>
-                            <h2 class="logo">NUTRICUT</h2>
-                                <nav class="navigation">
+                            <h2 className="logo">NUTRICUT</h2>
+                                <nav className="navigation">
                                 <a href="">Home</a>
                                 <a href="#">About</a>
                                 <a href="#">Services</a>
                                 <a href="#">Contact</a>
-                                <button class="btnLogin-popup" onClick={() => { setOpen(!open); } }>Login</button>
-                            </nav>
+                                <button className="btnLogin-popup" onClick={() => { setOpen(!open); } }>Login</button>
+                                </nav>
                             </header>
 
                             <div className={`wrapper ${open? 'active-popup' : ''} ${register? 'active' : ''} ` }>

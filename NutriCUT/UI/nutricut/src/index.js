@@ -5,20 +5,8 @@ import reportWebVitals from './reportWebVitals';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-
-    <div>
-    <style jsx global>{`
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    `}</style>
+root.render(  
     <App />
-  </div>
-    
-    
- 
 );
 
 // If you want to start measuring performance in your app, pass a function

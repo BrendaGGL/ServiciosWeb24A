@@ -21,6 +21,29 @@ export const RecipeWrapper = styled.div`
         margin-top: 2rem;
     }
 
+    .button {
+
+    padding: 1rem 2rem;
+    color: #313131;
+    background: white;
+    border: 2px solid black;
+    margin-right: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background-color: #313131;
+  color: white;
+}
+
+.button.clicked {
+  background-color:  #313131;
+  color: white;
+  border-color: #65b741; /* Extra styling to distinguish the clicked state */
+}
+
 `
 
 export const Button = styled.button`
