@@ -3,7 +3,7 @@ import Meal from "./WeekList";
 
 export function WeekList({ mealData }) {
 
-  const nutrients = mealData.monday.nutrients;
+
 
   return (
     

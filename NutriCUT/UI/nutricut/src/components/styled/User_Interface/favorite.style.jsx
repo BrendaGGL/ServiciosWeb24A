@@ -171,6 +171,7 @@ h2
     font-size: 50px;
     color: #292933;
     margin-bottom: 40px;
+    margin-left: 50px;
 }
 
 span

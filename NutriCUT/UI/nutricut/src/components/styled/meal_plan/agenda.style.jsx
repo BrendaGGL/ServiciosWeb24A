@@ -15,8 +15,33 @@ body {
 
 /* Toggle Styles */
 
+button {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: #0973ec;
+  color: #f3f3f3;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 5rem;
+}
 
+button:hover {
+  background-color: #136fd1;
+  cursor: pointer;
+}
 
+.controls {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+input {
+  text-align: center;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+}
 
 #sidebar-wrapper {
     z-index: 1000;
@@ -24,7 +49,7 @@ body {
     height: 95%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #ffffffeb;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -47,53 +72,52 @@ body {
     top: 0;
     width: 200px;
     margin: 0;
-    padding: 0;
+    padding-left: 30px;
     list-style: none;
 }
 
 .sidebar-nav h3{
-    color: white;
+    padding-top: 30px;
+    color: #000000;
 }
 
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
+img
+{
+    border-radius: 25px 25px 0 0;
+    width: 100%;
+    height: 250px;
 }
 
-.sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #999999;
-}
-
-.sidebar-nav li a:hover {
-    text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 65px;
+h3
+{
     font-size: 18px;
-    line-height: 60px;
+    color: #292933;
+    padding: 25px 25px 10px 25px;
 }
 
-.sidebar-nav > .sidebar-brand a {
-    color: #999999;
+.prices
+{
+    padding: 0 25px 10px 25px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
-    background: none;
+.prices
+{
+    color: #ffb534;
+    font-size: 18px;
+    font-weight: 600;
 }
 
-
-
+.btn-2
+{
+    display: inline-block;
+    background-color: #ffb534;
+    font-size: 14px;
+    padding: 7px 15px;
+    color: #fbfcff;
+    border-radius: 10px;
+}
 
 @media(min-width:768px) {
     #wrapper {
@@ -166,22 +190,22 @@ export const Week = styled.div `
 
 .semana {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 20px;
     
 }
 
 .dias {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
     
 }
 
 .dia {
-    height: 100px;
+    height: 50px;
     text-align: center;
-    line-height: 100px;
+    line-height: 50px;
     box-sizing: border-box;
     border-radius: 5px;
     background-color: #f9f9f9;
@@ -196,11 +220,12 @@ export const Week = styled.div `
     padding: 5px;
     border-radius: 5px;
     min-height: 100px;
+    width: 200px;
 }
 
 .dia-contenedor img{
-    height: 80px;
-    width: 80px;
+    height: 200px;
+    width: 200px;
 }
 
 .dia-contenedor h3{

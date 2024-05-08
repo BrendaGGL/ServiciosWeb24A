@@ -1,19 +1,34 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Navigation } from '../../../components/Navigation'
 import { PlanCSS, Week } from '../../../components/styled/meal_plan/agenda.style';
 import { WeekList } from '../../../components/mealPlan/week/SearchWeek';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export function WeeklyPlan() {
 
   const [mealData, setMealData] = useState(null);
-  const [calories, setCalories] = useState(2000);
-  const[name, setName] = useState('Plan del dia');
+  const [calories, setCalories] = useState('');
+  const[name, setName] = useState('');
   const [error, setError] = useState('');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const user = localStorage.getItem('userAPI')
   const hash = localStorage.getItem('hash')
+
+  useEffect(() => {
+    if(localStorage.getItem('jwt') === null){                   
+        window.location.href = '/'
+    }
+    }, [])
+
+    function closeModal() {
+      setModalIsOpen(false);
+      window.location.href = '/day_plan'
+    }
 
   async function getMealData() {
   await fetch(
@@ -315,6 +330,7 @@ export function WeeklyPlan() {
           axios.post(`http://localhost:8001/api/userplans`,
         Plandetails ,{headers: 
         {'Content-Type': 'application/json'}})
+        setModalIsOpen(true)
       })
       .catch((error) => {
           // Error
@@ -339,7 +355,83 @@ export function WeeklyPlan() {
 
 
 
+  if(mealData){
+    return  <><Navigation /><div>
+    <PlanCSS>
 
+    <Modal show={modalIsOpen} onHide={closeModal}>
+        <Modal.Header>
+          <Modal.Title>Guardado</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>El plan ha sido guardado con exito</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={closeModal}>
+            Cerrar
+          </Button>
+          <Link to='/plan'>
+          <Button variant="secondary">
+            Ver
+          </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
+
+    <div id="wrapper">
+              <div id="sidebar-wrapper">
+                  <ul className="sidebar-nav">
+                    <h3>Plan Semanal</h3>
+                    <br/><br/><br/>
+                  <section className="controls">
+                      <input
+                      type="number"
+                      value={calories}
+                      placeholder="Calories (e.g. 2000)"
+                      onChange={handleChange}
+                      />
+                      <button disabled={calories.trim() === ''} onClick={getMealData}>Generar Plan</button>
+                      <input
+                      type="text"
+                      placeholder="Nombre del plan"
+                      onChange={handleName}
+                      value={name}
+                      />
+                      <button  disabled={name.trim() === ''} onClick={savePlan}>Guardar Plan</button>
+                  </section> 
+
+                  </ul>
+              </div>
+
+          <div id="page-content-wrapper">
+              <div className="container-fluid">
+                  <div className="row">
+                      <div className="col-lg-12">
+                        <Week>
+                        <div className="container">
+                          <div className="agenda">
+                            <div className="semana">
+                              <div className="dia">Día</div>
+                              <div className="dia">Desayuno</div>
+                              <div className="dia">Comida</div>
+                              <div className="dia">Cena</div>
+                            </div>
+                            {mealData && <WeekList mealData={mealData} />}
+                          </div>
+                        </div>
+                        </Week>
+                          
+                          
+                          
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+
+          </div>
+          </PlanCSS>
+  </div></>
+  }
 
 
 
@@ -357,14 +449,9 @@ export function WeeklyPlan() {
                         type="number"
                         placeholder="Calories (e.g. 2000)"
                         onChange={handleChange}
+                        value={calories}
                         />
-                        <button onClick={getMealData}>Generar Plan Semanal</button>
-                        <input
-                        type="text"
-                        placeholder="Nombre del plan"
-                        onChange={handleName}
-                        />
-                        <button onClick={savePlan}>Guardar Plan</button>
+                        <button disabled={calories.trim() === ''} onClick={getMealData}>Generar Plan</button>
                     </section> 
 
                     </ul>

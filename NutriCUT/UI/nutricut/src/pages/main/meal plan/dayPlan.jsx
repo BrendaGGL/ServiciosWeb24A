@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigation } from '../../../components/Navigation'
 import MealList from "../../../components/mealPlan/daily/SerchDaily";
 import { DayCSS } from "../../../components/styled/meal_plan/dayplan.style";
 import axios from 'axios'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { Link } from "react-router-dom";
 
 
 export function Dayplan() {
     const [mealData, setMealData] = useState(null);
-    const [calories, setCalories] = useState(2000);
-    const[name, setName] = useState('Plan del dia');
+    const [calories, setCalories] = useState('');
+    const[name, setName] = useState('');
     const [error, setError] = useState('');
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const user = localStorage.getItem('userAPI')
     const hash = localStorage.getItem('hash')
+
+
+    useEffect(() => {
+      if(localStorage.getItem('jwt') === null){                   
+          window.location.href = '/'
+      }
+      }, [])
 
     function getMealData() {
     fetch(
@@ -28,7 +39,12 @@ export function Dayplan() {
         });
     }
 
-
+    
+    function closeModal() {
+      setModalIsOpen(false);
+      window.location.href = '/day_plan'
+    }
+    
     function handleChange(e) {
       setCalories(e.target.value);
     }
@@ -98,6 +114,8 @@ export function Dayplan() {
           axios.post(`http://localhost:8001/api/userplans`,
         Plandetails ,{headers: 
         {'Content-Type': 'application/json'}})
+        setModalIsOpen(true)
+        
       })
       .catch((error) => {
           // Error
@@ -114,7 +132,70 @@ export function Dayplan() {
 
     }
 
-    
+    if(mealData){
+      return <div >
+      <Navigation/>
+      <DayCSS>
+          
+      <Modal show={modalIsOpen} onHide={closeModal}>
+        <Modal.Header>
+          <Modal.Title>Guardado</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>El plan ha sido guardado con exito</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={closeModal}>
+            Cerrar
+          </Button>
+          <Link to='/plan'>
+          <Button variant="secondary">
+            Ver
+          </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
+
+      <div className="App">
+        <section className="controls">
+        <div className="row text-center">
+        <div className="col-6">
+            <input
+              type="number"
+              placeholder="Calories (e.g. 2000)"
+              onChange={handleChange}
+            />
+            <button onClick={getMealData} disabled={calories.trim() === ''}>Generar Plan </button>
+            
+
+        </div>
+
+        <div className="col-6">
+          <div className="row">
+            <input
+                  type="text"
+                  placeholder="Nombre del plan"
+                  value={name}
+                  onChange={handleName}
+                />
+          </div>
+          <div className="row">
+            <button  onClick={savePlan} disabled={name.trim() === ''}>  Guardar</button>
+          </div>
+          
+              
+          </div>
+        </div>
+        </section>
+        
+        
+        
+
+        {mealData && <MealList mealData={mealData} />}
+      </div>
+      </DayCSS>
+
+      
+  </div>
+    }
     
     return (
         <div>
@@ -127,15 +208,11 @@ export function Dayplan() {
         <input
           type="number"
           placeholder="Calories (e.g. 2000)"
+          value={calories}
           onChange={handleChange}
         />
-        <button onClick={getMealData}>Get Daily Meal Plan</button>
-        <input
-          type="text"
-          placeholder="Nombre del plan"
-          onChange={handleName}
-        />
-        <button onClick={savePlan}>  Guardar</button>
+        <button disabled={calories.trim() === ''} onClick={getMealData}>Generar Plan</button>
+      
       </section>
       
       {mealData && <MealList mealData={mealData} />}

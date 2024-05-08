@@ -166,11 +166,21 @@ def Plan_user():
         if user and plan:
             plan_list = [item.name for item in plan]
             plan_id = [item.id for item in plan]
+            print(plan_id, plan_list)
             return jsonify(user = user.user , hash = user.hash , plan_list = plan_list, plan_id = plan_id ), 200
         elif user:
-            return jsonify(user = user.user , hash = user.hash), 200
+            plan_list = []
+            plan_id = []
+            print("No hay planes")
+            return jsonify(user = user.user , hash = user.hash , plan_list = plan_list, plan_id = plan_id ), 200
+
         else:
             return jsonify({'message': 'User does not exist'}), 404
+        
+
+
+
+
         
 @app.route('/api/register_userapi', methods = ['POST'])
 def register_api():
@@ -221,6 +231,18 @@ def like():
         return jsonify({
             'message': 'liked'
         })
+
+@app.route('/api/check_liked', methods = ['POST'])
+def liked():
+    if request.method == 'POST':
+        id = request.get_json()['id']
+        recipe = request.get_json()['recipe']
+        liked = UserRecipe.query.filter_by(user_id= id, recipe_id = recipe).first()
+        if liked:
+            return jsonify({'message': 'Recipe alreadt liked'}), 200
+        else:
+            return jsonify({'message': 'User does not exist'}), 404
+
 
 
 

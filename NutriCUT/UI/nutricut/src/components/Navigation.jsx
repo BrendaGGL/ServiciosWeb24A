@@ -17,7 +17,7 @@ export function Navigation() {
         <Nav>
         <header className="header">
             <div className="menu container">
-                    <a href="#" className="logo">NUTRICUT</a>
+                    <a href="/dashboard" className="logo">NUTRICUT</a>
                     <input type="checkbox" id="menu"/>
                     <label htmlFor="menu">
                         <img src="Assets/menu.png" className="menu-icono" alt=""/>
@@ -26,10 +26,8 @@ export function Navigation() {
                         <ul>
                             <li><a href="/dashboard">Inicio</a></li>
                             <li><a href="/recipes">Generar receta</a></li>
-                            <li><a href="#">Recetas</a></li>
                             <li><a href="/plan">Plan Alimenticio</a></li>
                             <li><a href="/favorite">Favoritos</a></li>
-                            <li><a href="#">Contacto</a></li>
                             <li><a href="/home" onClick={logout}>Logout</a></li>
                         </ul>
                     </nav>
@@ -67,7 +65,10 @@ body
     align-items: center;
     min-height: 10vh;
     padding: 80px 0 0 0;
+    top: 0;
 }
+
+
 
 .menu
 {
@@ -78,6 +79,7 @@ body
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 
 .logo

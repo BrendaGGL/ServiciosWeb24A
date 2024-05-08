@@ -1,8 +1,10 @@
 import {DashboardCSS} from '../../../components/Dashboard.style'
 import fondo from '../../../static/images/NUTRICUT.png'
-import atun from '../../../static/images/food/salmón-en-mantequilla-de-ajo.jpg'
 import {useEffect, useState} from "react";
-import { Navigation } from '../../../components/Navigation';
+import { Popular } from '../../../components/recipeGen/Popular';
+import Veggie from '../../../components/recipeGen/Veggie';
+import { Gluten } from '../../../components/recipeGen/GlutenFree';
+
 
 
 
@@ -59,7 +61,6 @@ export function Dashboard(){
                         <ul>
                             <li><a href="#">Inicio</a></li>
                             <li><a href="/recipes">Generar receta</a></li>
-                            <li><a href="#">Recetas</a></li>
                             <li><a href="/plan">Plan Alimenticio</a></li>
                             <li><a href="/favorite">Favoritos</a></li>
                             <li><a href="#">Contacto</a></li>
@@ -71,13 +72,9 @@ export function Dashboard(){
                 <div className="header-content container">
                     <div className="header-txt">
                         <h1>Todo <br/> <span>Planeado</span></h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur 
-                            adipisicing elit. Recusandae, ex.
-                        </p>
                         <div className="buttons">
-                            <a href="#" className="btn-1">Generar receta</a>
-                            <a href="#" className="btn-1">Agenda</a>
+                            <a href="/recipes" className="btn-1">Generar receta</a>
+                            <a href="/plan" className="btn-1">Agenda</a>
                         </div>
                     </div>
 
@@ -93,43 +90,7 @@ export function Dashboard(){
 
                 <h2>Top <span>recetas</span> </h2>
 
-                <div className="general-content">
-
-                    <div className="general-txt">
-                        <img src={atun} alt=""/>
-                        <h3>Tostadas de Ceviche de Pescado</h3>
-                        <p>
-                            Pescado fresco, limón, tomate ,cebolla morada, cilantro, aguacate, sal y pimienta al gusto.
-                        </p>
-                        <div className="prices">
-                            <a href="#" className="btn-2">Ver receta</a>
-                        </div>
-                    </div>
-                        
-                        <div className="general-txt">
-                            <img src="Assets/imagenes nutricut/platillos/chiles-rellenos-de-quinoa.jpg" alt=""/>
-                            <h3>Chiles rellenos de Quinoa</h3>
-                            <p>
-                                Chiles poblanos, quinoa, frijoles negros, maíz, tomate, cebolla ,ajo ,queso, salsa de tomate
-                            </p>
-                            <div className="prices">
-
-                                <a href="#" className="btn-2">Ver receta</a>
-                            </div>
-                        </div>
-
-                            <div className="general-txt">
-                                <img src="Assets/imagenes nutricut/platillos/ensalada-de-nopales.jpg" alt=""/>
-                                <h3>Ensalada de Nopalitos</h3>
-                                <p>
-                                    Nopalitos (pencas de nopal) ,tomate, cebolla, cilantro,aguacate, limón, sal y pimienta al gusto.
-                                </p>
-                                <div className="prices">
-                
-                                    <a href="#" className="btn-2">Ver receta</a>
-                                </div>
-                            </div>
-                </div>        
+                <Popular/>
             </section>
 
 
@@ -147,7 +108,7 @@ export function Dashboard(){
                         </p>
                         <div className="platoestrella">
 
-                            <a href="#" className="btn-2">Ver receta ahora</a>
+                            <a href="/recipes" className="btn-2">Buscar Receta Ahora</a>
                         </div>
                     </div>
 
@@ -161,81 +122,16 @@ export function Dashboard(){
 
             <section className="menu-pl container">
 
-                <h2>Nuestro <span>menu</span> </h2>
+                <h2>Picks<span> Vegetarianos</span> </h2>
 
-                <div className="general-content">
+                 <Veggie/>       
+            </section>
 
-                    <div className="general-txt">
-                        <img src="Assets/imagenes nutricut/platillos/Chips-de-manzana-con-canela.jpg" alt=""/>
-                        <h3>Chips de manzana con canela</h3>
-                        <p>
-                            Manzanas cortadas en rodajas finas y sin semillas, canela en polvo.
-                        </p>
-                        <div className="prices">
+            <section className="menu-pl container">
 
-                            <a href="#" className="btn-2">Ver receta</a>
-                        </div>
-                    </div>
-                        
-                        <div className="general-txt">
-                            <img src="Assets/imagenes nutricut/platillos/salmón-en-mantequilla-de-ajo.jpg" alt=""/>
-                            <h3>Salmón en mantequilla de ajo</h3>
-                            <p>
-                                Filetes de salmón, eneldo fresco, ajo,  jugo de limón, arroz, brócoli y mantequilla.
-                            </p>
-                            <div className="prices">
+                <h2>Gluten<span> Free</span> </h2>
 
-                                <a href="#" className="btn-2">Ver receta</a>
-                            </div>
-                        </div>
-
-                            <div className="general-txt">
-                                <img src="Assets/imagenes nutricut/platillos/mac-and-cheese-coliflor-2.webp" alt=""/>
-                                <h3>Mac and Cheese de Coliflor</h3>
-                                <p>
-                                    Coliflor, Ajo, Cebolla amarilla, Mantequilla, Queso cheddar blanco, crema, Pasta en forma de concha, Harina, Migas de pan, Mostaza Dijon.
-                                </p>
-                                <div className="prices">
-                
-                                    <a href="#" className="btn-2">Ver receta</a>
-                                </div>
-                            </div>
-                            <div className="general-txt">
-                                <img src="Assets/imagenes nutricut/platillos/Tostada-de-queso-con-frutos rojos.jpg" alt=""/>
-                                <h3>Tostada de queso con frutos rojos</h3>
-                                <p>
-                                    huevo, yogur natural sin grasa extracto de vainilla, miel de maple, queso crema, pan integral, 
-                                    bayas mixtas (frambuesas, moras y arándanos), azúcar en polvo (opcional).
-                                </p>
-                                <div className="prices">
-                
-                                    <a href="#" className="btn-2">Ver receta</a>
-                                </div>
-                            </div>
-                            <div className="general-txt">
-                                <img src="Assets/imagenes nutricut/platillos/ensalada-con-milanesa-de-pollo.jpg" alt=""/>
-                                <h3>Ensalda con milanesa de pollo</h3>
-                                <p>
-                                    Lechuga, arugula, jitomate, pimiento (amarillo y rojo), pepino, milanesa de pollo, 
-                                    perejil, parmesano, aceite de oliva, vinagre balsámico.
-                                </p>
-                                <div className="prices">
-                
-                                    <a href="#" className="btn-2">Ver receta</a>
-                                </div>
-                            </div>
-                            <div className="general-txt">
-                                <img src="Assets/imagenes nutricut/platillos/hamburguesa-de-pollo-a-la-plancha.webp" alt=""/>
-                                <h3>Hamburguesa de pollo a la plancha</h3>
-                                <p>
-                                    Lechuga, jitomate, pechuga de pollo, tocino de pavo, queso cheddar, bollos de pan multigrano.
-                                </p>
-                                <div className="prices">
-                
-                                    <a href="#" className="btn-2">Ver receta</a>
-                                </div>
-                            </div>
-                </div>        
+                 <Gluten/>       
             </section>
 
 

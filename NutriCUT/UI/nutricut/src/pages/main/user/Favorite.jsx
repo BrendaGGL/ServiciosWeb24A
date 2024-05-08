@@ -14,6 +14,11 @@ export function Favorite() {
     const id = localStorage.getItem('id')
   // Fetch IDs from Flask
     useEffect(() => {
+
+        if(localStorage.getItem('jwt') === null){                   
+            window.location.href = '/'
+        }
+
     const request ={
         id: id
     }
@@ -34,6 +39,11 @@ export function Favorite() {
 
    //Fetch data for each ID
     useEffect(() => {
+
+
+        if(localStorage.getItem('jwt') === null){                   
+            window.location.href = '/'
+        }
     
     if (ids.length > 0) {
         setIsLoading(true);
@@ -53,8 +63,20 @@ export function Favorite() {
         }
     }, [ids]);
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error fetching data</div>;
+    if (isLoading) return <div></div>;
+    if (error){
+        return <div>
+            <Navigation/>
+            <FavCSS>
+                <h2><span> Favoritas</span> </h2>
+                <div className="general-content">
+                    <h2> Parece que aun no tienes favoritos</h2>
+                </div>
+                
+            </FavCSS>
+
+        </div> 
+    }    
 
 
 
@@ -86,50 +108,6 @@ export function Favorite() {
     </section>
 
 
-    <footer className="footer">
-
-        <div className="footer-content container">
-
-            <div className="link">
-                <h3>Lorem</h3>
-                <ul>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                </ul>
-            </div>
-            <div className="link">
-                <h3>Lorem</h3>
-                <ul>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                </ul>
-            </div>
-            <div className="link">
-                <h3>Lorem</h3>
-                <ul>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                </ul>
-            </div>
-            <div className="link">
-                <h3>Lorem</h3>
-                <ul>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                </ul>
-            </div>
-
-        </div>
-
-    </footer>
     </FavCSS>
     </div>
     )

@@ -20,24 +20,23 @@ export default function Meal({ meal }) {
 
   if (imageUrl){
 
-    return <article> 
+    return <div className="general-txt"> 
                 <img src={imageUrl} alt=""/>
                 <h3>{meal.title}</h3>
                 <div className="prices">
                 <a href={'/recipe/'+meal.id}  rel="noopener" target="_blank" className="btn-2">Ver receta</a>
                 </div>
-            </article> 
+            </div> 
         
 }else{
     setImageUrl(image);
-    return <article> 
-            
-                <img src={imageUrl} alt=""/>
-                <h3>{meal.title}</h3>
-                <div className="prices">
-                <a href={'/recipe/'+meal.id}  rel="noopener" target="_blank" className="btn-2">Ver receta</a>
-                </div>
-            </article> 
+    return <div className="general-txt"> 
+              <img src={imageUrl} alt=""/>
+              <h3>{meal.title}</h3>
+              <div className="prices">
+              <a href={'/recipe/'+meal.id}  rel="noopener" target="_blank" className="btn-2">Ver receta</a>
+              </div>
+          </div>  
 
 }
 

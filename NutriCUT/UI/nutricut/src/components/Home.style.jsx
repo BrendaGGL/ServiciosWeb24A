@@ -3,7 +3,6 @@ import img from '../static/images/login3.jpg'
 
 
 
-
 export const HomeCSS = styled.nav`
     
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
@@ -60,6 +59,13 @@ body
     font-weight: bold;
 
 }
+
+.custom-modal {
+  max-width: 90%;  /* Custom width */
+  background-color: #f8f9fa; /* Custom background */
+}
+
+
 
 .navigation a::after
 {
@@ -243,7 +249,7 @@ body
     right: 8px;
     font-size: 1.2em;
     color: #65b741;
-    line-height: 57px;
+    line-height: 40px;
 }
 
 .remember-forgot

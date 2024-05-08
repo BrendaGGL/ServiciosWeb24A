@@ -50,15 +50,49 @@ export function PlanList() {
         } 
     }, [])
 
-    const Create = () => {
-        navigate('/plan_user');
-      };
 
     if (error) {
         return <div>
                 <Navigation/>
                 <FormPlan/>
                 </div>;
+    }
+
+    if(!data.length && !idplans.length){
+        <><Navigation />
+            <br/>
+            <div className="container">
+                <div className="row">
+                    <div className="col-1">
+                        <PlanOptions/>
+                    </div>
+                    <div className="col-1">
+                        <button type="button"  class="btn btn-danger">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <FavCSS>
+            <section className="menu-pl container">
+            <div className="general-content">
+                {data.map((name, id) => {
+                    return(
+                        <div className="general-txt" key={name}> 
+                                <img src={Planimg} alt=""/>
+                                <h3>{name} </h3>
+                                <div key={id} className="prices">
+                                    <Link to={`/plan_user/${idplans[id]}/${name}`}> 
+                                        <a className="btn-2">Ver Plan</a>
+                                    </Link>
+                                </div>
+                        </div>
+                        );
+                    })}
+
+            </div>
+            </section>
+        </FavCSS></>
     }
 
 
@@ -69,9 +103,6 @@ export function PlanList() {
                 <div className="row">
                     <div className="col-1">
                         <PlanOptions/>
-                    </div>
-                    <div className="col-1">
-                        <button type="button"  class="btn btn-danger">Eliminar</button>
                     </div>
                 </div>
             </div>

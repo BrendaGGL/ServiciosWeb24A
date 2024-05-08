@@ -6,7 +6,6 @@ import { Panel } from "./pages/admin/Panel";
 import { Panel_Recipes } from "./pages/admin/Panel_Recipes";
 import { Recipes } from "./pages/main/recipe_gen/Gen";
 import { Generator } from "./pages/main/recipe_gen/Home";
-import { Cousine } from "./pages/main/recipe_gen/Cousine";
 import { Search } from "./pages/main/recipe_gen/Search";
 import { Recipe } from "./pages/main/recipe_gen/Recipe";
 import Plan from "./pages/main/meal plan/Plan";
@@ -30,7 +29,6 @@ function App() {
         <Route path= "/panel_admin/recipes" element={<Panel_Recipes/>}/>
         <Route path= "/recipes" element={<Recipes/>}/>
         <Route path="/recipes/generator" element={<Generator/>} />
-        <Route path="/cousine/:type" element={<Cousine/>} />
         <Route path="/searched/:search" element={<Search/>} />
         <Route path="/recipe/:name" element={<Recipe/>} />
         <Route path="/plan" element={<PlanList/>} />
@@ -38,8 +36,8 @@ function App() {
         <Route path="/plan_user/" element={<CreatePlan/>} />
         <Route path="/plan_user/:id/:name" element={<Plan/>} />
         <Route path="/day_plan/" element={<Dayplan/>} />
-
         <Route path="/week_plan/" element={<WeeklyPlan/>} />
+
 
       </Routes>
     </BrowserRouter>

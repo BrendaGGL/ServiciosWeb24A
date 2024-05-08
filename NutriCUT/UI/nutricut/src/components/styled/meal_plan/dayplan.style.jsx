@@ -19,7 +19,7 @@ body {
 }
 
 section {
-  margin: 2rem 0 1rem 0;
+  margin: 0.7rem 0 1rem 0;
 }
 
 .controls {
@@ -32,20 +32,22 @@ input {
   text-align: center;
   padding: 0.5rem;
   margin-bottom: 1rem;
+  margin-left: 7rem;
 }
 
 button {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  background-color: #7f21eb;
+  width: 200px;
+  padding: 0.5rem 0.5rem;
+  background-color: #0973ec;
   color: #f3f3f3;
   border: none;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
+  margin-left: 7rem;
 }
 
 button:hover {
-  background-color: #6c13d1;
+  background-color: #136fd1;
   cursor: pointer;
 }
 
@@ -53,7 +55,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding:  30px 100px 0;
+  padding:  0 80px 0;
 }
 
 h1 {
@@ -62,56 +64,96 @@ h1 {
 }
 
 .nutrients ul {
-  display: flex;
+  
+  list-style-type: circle;
+  display: list-item;
   width: 35rem;
   height: 1rem;
-  justify-content: space-evenly;
+  padding-left: 70px;
+  justify-content: center;
+  font-size: 1.2rem;
 }
 
 .meals {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+
+
+.general-content
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 35px;
 }
 
-img {
+.general-txt
+{
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding-bottom: 35px;
+}
+
+
+.general-txt img
+{
     border-radius: 25px 25px 0 0;
     width: 100%;
     height: 250px;
 }
-h3
+
+.general-txt h3
 {
     font-size: 18px;
     color: #292933;
     padding: 25px 25px 10px 25px;
 }
 
-article {
-    border-radius: 25px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    padding: 35px;
-    width: 80%;
+.general-txt p
+{
+    font-size: 16px;
+    color: #3a3a48;
+    padding: 0 25px 20px 25px;
 }
 
-ul {
-  list-style: none;
+.prices
+{
+    padding: 0 25px 10px 25px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.instructions {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
+.prices
+{
+    color: #ffb534;
+    font-size: 18px;
+    font-weight: 600;
 }
+
+.btn-2
+{
+    display: inline-block;
+    background-color: #ffb534;
+    font-size: 14px;
+    padding: 7px 15px;
+    color: #fbfcff;
+    border-radius: 10px;
+}
+
+
 
 a {
   text-decoration: none;
-  background-color: #7f21eb;
+  background-color: #0973ec;
   color: #f3f3f3;
   width: fit-content;
   padding: 0.5rem 1rem;
 }
 
 a:hover {
-  background-color: #6c13d1;
+  background-color: #136fd1;
   cursor: pointer;
 }
 
